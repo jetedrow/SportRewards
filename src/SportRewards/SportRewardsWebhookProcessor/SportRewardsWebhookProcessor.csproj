@@ -5,16 +5,22 @@
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>5e51856f-fd29-4d42-8c6e-56049409d3ac</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.20.1" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="1.2.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.RabbitMQ" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.16.4" />
-    <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.21.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="1.1.0" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.4.0" />
+    <PackageReference Include="Azure.Identity" Version="1.13.2" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.RabbitMQ" Version="2.0.3" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.23.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.2" />
+    <PackageReference Include="MongoDB.Driver" Version="3.2.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.1.1" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

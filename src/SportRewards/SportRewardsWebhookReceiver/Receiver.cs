@@ -37,6 +37,7 @@ namespace SportRewardsWebhookReceiver
 
                 if (data is null)
                 {
+                    _logger.LogError("Empty request received.");
                     return new BadRequestResult();
                 }
 
@@ -45,6 +46,7 @@ namespace SportRewardsWebhookReceiver
 
                 if (!isValid)
                 {
+                    _logger.LogWarning("Invalid request {RequestId} received.", data?.RequestId ?? "(not provided)");
                     return new BadRequestObjectResult(new { Messages = results.Select(m => m.ErrorMessage) });
                 }
 
@@ -63,17 +65,19 @@ namespace SportRewardsWebhookReceiver
                 await channel.BasicPublishAsync(exchange: string.Empty, routingKey: data?.Event ?? "unknown-event", mandatory: true,
                     basicProperties: new BasicProperties { Persistent = true }, body: Encoding.UTF8.GetBytes(bodyData));
 
+                _logger.LogInformation("Received Request {RequestId} successfully.", data?.RequestId);
+                return new OkObjectResult(new { data?.RequestId, Result = "success" });
             }
             catch (JsonException jex)
             {
+                _logger.LogError("Invalid JSON specified: {Message}", jex.Message);
                 return new BadRequestObjectResult(new { jex.Message });
             }
             catch (Exception ex)
             {
+                _logger.LogError("Unhandled exception {ExceptionType} encountered: {Message}", ex.GetType().Name, ex.Message);
                 return new BadRequestObjectResult(new { ex.Message, Type = ex.GetType().Name });
             }
-            
-            return new OkObjectResult(new { data?.RequestId, Result = "success" });
         }
     }
 }
