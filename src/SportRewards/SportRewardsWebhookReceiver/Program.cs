@@ -2,20 +2,20 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
+using System.Configuration;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
-    .ConfigureServices(services => {
+    .ConfigureServices((context, services) => {
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
+        //TODO: update to pull from connectionstrings
         services.AddSingleton<IConnectionFactory>(new ConnectionFactory
         {
-            HostName = "localhost",
-            Port = 5672,
-            UserName = "admin",
-            Password = "password"            
+            Uri = new Uri(context.Configuration.GetSection("ConnectionStrings")["MQConnectionString"] ?? "invalid")
         });
     })
     .Build();
+
 
 host.Run();
