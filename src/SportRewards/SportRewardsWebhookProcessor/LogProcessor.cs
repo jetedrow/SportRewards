@@ -11,7 +11,7 @@ namespace SportRewardsWebhookProcessor
         [Function("LogProcessor")]
         public void Run([RabbitMQTrigger("webhooklog", ConnectionStringSetting = "MQConnectionString")] string myQueueItem)
         {
-            _logger.LogInformation("C# Queue trigger function processed: {myQueueItem}", myQueueItem.Take(40));
+            _logger.LogInformation("Queue trigger {functionName} function processed: {myQueueItem}", nameof(LogProcessor), myQueueItem.Take(40).ToString());
         }
     }
 }

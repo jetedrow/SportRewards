@@ -7,6 +7,7 @@ namespace SportsRewardsModels
     [JsonDerivedType(typeof(WebhookData<CustomerData>),"customer")]
     [JsonDerivedType(typeof(WebhookData<BalanceUpdate>), "balanceupdate")]
     [JsonDerivedType(typeof(WebhookData<RewardsTransaction>), "transaction")]
+    [JsonDerivedType(typeof(WebhookData<object>))]
     public interface IWebhookData
     {
         string? CustomerId { get; set; }
