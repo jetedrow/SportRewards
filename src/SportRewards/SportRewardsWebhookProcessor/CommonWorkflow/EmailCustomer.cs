@@ -17,9 +17,18 @@ namespace SportRewardsWebhookProcessor.CommonWorkflow
         {
             var request = JsonSerializer.Deserialize<EmailRequest>(myQueueItem, CommonElements.DefaultJsonSerializerOptions);
 
-            // Make some sort of call to e-mail system such as SES, SendGrid, etc.
+            if (request is not null)
+            {
+                // Make some sort of call to e-mail system such as SES, SendGrid, etc.
 
-            _logger.LogInformation("Email {template} sent for customer {customerId}", request.TemplateName, request.CustomerId);
+                _logger.LogInformation("Email {template} sent for customer {customerId}", request.TemplateName, request.CustomerId);
+            }
+            else
+            {
+                _logger.LogError("Email processing error: null request received.");
+            }
+
+
         }
     }
 }

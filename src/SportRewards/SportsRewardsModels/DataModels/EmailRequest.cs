@@ -11,6 +11,7 @@ namespace SportsRewardsModels.DataModels
     {
         public string? CustomerId { get; set; }
         public string? TemplateName { get; set; }
-        public Dictionary<string, string> TemplateData { get; set; } = [];
+        public string? Email { get; set; }
+        public Dictionary<string, string?> TemplateData { get; set; } = [];
     }
 }

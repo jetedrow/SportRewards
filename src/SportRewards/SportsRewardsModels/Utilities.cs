@@ -10,13 +10,14 @@ namespace SportsRewardsModels
     // This class should be in its own project, not living with models,
     // however it is placed here to avoid having another project in the solution.
     // In a production (non-coding exercise) environment, this would be separated.
-    public static class CommonElements
+    public static class Utilities
     {
-        public static readonly JsonSerializerOptions DefaultJsonSerializerOptions = new()
+
+        public static byte[] SerializeToByteArray<TInput>(TInput source, JsonSerializerOptions? serializerOptions = null)
         {
-            AllowOutOfOrderMetadataProperties = true,
-            AllowTrailingCommas = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        };
+            var json = JsonSerializer.Serialize<TInput>(source, serializerOptions);
+            return System.Text.Encoding.UTF8.GetBytes(json);
+        }
+
     }
 }
