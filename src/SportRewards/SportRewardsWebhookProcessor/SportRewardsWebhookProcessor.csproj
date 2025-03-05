@@ -38,4 +38,7 @@
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\ServiceDependencies\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportsRewardsModels\SportsRewardsModels.csproj" />
+  </ItemGroup>
 </Project>

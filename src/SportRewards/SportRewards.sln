@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportRewardsWebhookReceiver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportRewardsWebhookProcessor", "SportRewardsWebhookProcessor\SportRewardsWebhookProcessor.csproj", "{E086CC55-73E6-41CB-9452-4B49F80871DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportRewards API", "SportRewards API\SportRewards API.csproj", "{BBCD2F3C-AEA5-48CE-9937-752430508B76}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsRewardsModels", "SportsRewardsModels\SportsRewardsModels.csproj", "{8C7256D6-3192-4A21-8C5B-EC087674E628}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{E086CC55-73E6-41CB-9452-4B49F80871DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E086CC55-73E6-41CB-9452-4B49F80871DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E086CC55-73E6-41CB-9452-4B49F80871DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBCD2F3C-AEA5-48CE-9937-752430508B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBCD2F3C-AEA5-48CE-9937-752430508B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBCD2F3C-AEA5-48CE-9937-752430508B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBCD2F3C-AEA5-48CE-9937-752430508B76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8C7256D6-3192-4A21-8C5B-EC087674E628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8C7256D6-3192-4A21-8C5B-EC087674E628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C7256D6-3192-4A21-8C5B-EC087674E628}.Release|Any CPU.ActiveCfg = Release|Any CPU

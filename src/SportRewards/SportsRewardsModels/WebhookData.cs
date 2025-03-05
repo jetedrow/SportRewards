@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using SportsRewardsModels.EventData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
@@ -6,6 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace SportsRewardsModels
 {
+    [BsonKnownTypes(typeof(CustomerData))]
     public class WebhookData<EventType> : IWebhookData
     {
         [Required]

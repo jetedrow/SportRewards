@@ -16,14 +16,9 @@ namespace SportRewardsWebhookReceiver
     {
         private readonly ILogger<Receiver> _logger = logger;
         private readonly IConnectionFactory factory = factory;
-        private readonly JsonSerializerOptions serOptions = new() {
-            AllowOutOfOrderMetadataProperties = true,
-            AllowTrailingCommas = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        };
 
         [Function("ReceiveWebhook")]
-        public async Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post", "put")] HttpRequest req)
+        public async Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
         {
             IWebhookData? data;
 
@@ -32,7 +27,7 @@ namespace SportRewardsWebhookReceiver
                 // Use polymorphic deserialization to get correct implementation based on $type of webhook.
                 using var sr = new StreamReader(req.Body);
                 string bodyData = await sr.ReadToEndAsync();
-                data = JsonSerializer.Deserialize<IWebhookData>(bodyData, serOptions);
+                data = JsonSerializer.Deserialize<IWebhookData>(bodyData, CommonElements.DefaultJsonSerializerOptions);
                 List<ValidationResult> results = [];
 
                 if (data is null)

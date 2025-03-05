@@ -9,7 +9,6 @@ var host = new HostBuilder()
     .ConfigureServices((context, services) => {
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
-        //TODO: update to pull from connectionstrings
         services.AddSingleton<IConnectionFactory>(new ConnectionFactory
         {
             Uri = new Uri(context.Configuration.GetSection("ConnectionStrings")["MQConnectionString"] ?? "invalid")
