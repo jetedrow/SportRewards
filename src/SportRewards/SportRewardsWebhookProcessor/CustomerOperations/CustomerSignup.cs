@@ -5,6 +5,7 @@ using Azure.Core;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Misc;
 using RabbitMQ.Client;
 using SportsRewardsModels;
 using SportsRewardsModels.DataModels;
@@ -38,6 +39,8 @@ namespace SportRewardsWebhookProcessor.CustomerOperations
                 var customerCollection = database.GetCollection<Customer>("customers");
 
                 var filter = Builders<Customer>.Filter.Eq(c => c.CustomerId, signupEvent.CustomerId);
+
+                // Ensure customer doesn't exist, 
 
                 var exists = await customerCollection.Find(filter).AnyAsync();
 
